@@ -131,6 +131,19 @@ const InquiryPage = () => {
               <p className="text-xs text-center text-muted-foreground">
                 By submitting, you agree to our Terms and Privacy Policy.
               </p>
+
+              <a
+                href={`https://wa.me/917909027036?text=${encodeURIComponent(
+                  form.service
+                    ? `Hi, I'm interested in ${form.service}. Please assist me.`
+                    : "Hi, I need help with PAN services."
+                )}`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-3 p-4 rounded-2xl bg-accent text-accent-foreground font-semibold shadow-elegant hover:shadow-glow transition-smooth"
+              >
+                <MessageCircle className="h-5 w-5" /> Chat on WhatsApp{form.service ? ` — ${form.service}` : ""}
+              </a>
             </form>
           )}
         </div>
