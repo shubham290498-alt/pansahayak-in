@@ -50,9 +50,9 @@ const ContactPage = () => {
         <div className="container grid lg:grid-cols-2 gap-10">
           <div className="space-y-5">
             {[
-              { Icon: Phone, label: "Phone", value: "+91 98765 43210", href: "tel:+919876543210" },
+              { Icon: Phone, label: "Phone", value: "+91 79090 27036", href: "tel:+917909027036" },
               { Icon: Mail, label: "Email", value: "support@pansahayak.in", href: "mailto:support@pansahayak.in" },
-              { Icon: MessageCircle, label: "WhatsApp", value: "+91 98765 43210", href: "https://wa.me/919876543210" },
+              { Icon: MessageCircle, label: "WhatsApp", value: "+91 79090 27036", href: "https://wa.me/917909027036?text=Hi,%20I%20need%20help%20with%20PAN%20services." },
               { Icon: MapPin, label: "Office", value: "Connaught Place, New Delhi, India 110001" },
               { Icon: Clock, label: "Business Hours", value: "Mon – Sat: 9:00 AM – 7:00 PM IST" },
             ].map(({ Icon, label, value, href }) => (
@@ -74,7 +74,7 @@ const ContactPage = () => {
             ))}
 
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/917909027036?text=Hi,%20I%20need%20help%20with%20PAN%20services."
               target="_blank"
               rel="noreferrer"
               className="flex items-center justify-center gap-3 p-5 rounded-2xl bg-accent text-accent-foreground font-semibold shadow-elegant hover:shadow-glow transition-smooth"
