@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Upload, CheckCircle2, Send } from "lucide-react";
+import { Upload, CheckCircle2, Send, MessageCircle } from "lucide-react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
