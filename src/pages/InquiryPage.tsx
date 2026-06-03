@@ -28,9 +28,15 @@ const services = [
 ];
 
 const InquiryPage = () => {
+  const [searchParams] = useSearchParams();
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", mobile: "", email: "", service: "", message: "" });
+  const [form, setForm] = useState({ name: "", mobile: "", email: "", service: searchParams.get("service") || "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const service = searchParams.get("service");
+    if (service) setForm((prev) => ({ ...prev, service }));
+  }, [searchParams]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
