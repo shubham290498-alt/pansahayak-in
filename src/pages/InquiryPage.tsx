@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Upload, CheckCircle2, Send, MessageCircle } from "lucide-react";
@@ -27,9 +28,15 @@ const services = [
 ];
 
 const InquiryPage = () => {
+  const [searchParams] = useSearchParams();
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", mobile: "", email: "", service: "", message: "" });
+  const [form, setForm] = useState({ name: "", mobile: "", email: "", service: searchParams.get("service") || "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const service = searchParams.get("service");
+    if (service) setForm((prev) => ({ ...prev, service }));
+  }, [searchParams]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -77,6 +84,7 @@ const InquiryPage = () => {
                 onClick={() => {
                   setSubmitted(false);
                   setForm({ name: "", mobile: "", email: "", service: "", message: "" });
+                  window.history.replaceState({}, "", "/inquiry");
                 }}
               >
                 Submit another inquiry
@@ -89,7 +97,7 @@ const InquiryPage = () => {
                   <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Rahul Sharma" />
                 </Field>
                 <Field label="Mobile Number" error={errors.mobile}>
-                  <Input value={form.mobile} onChange={(e) => setForm({ ...form, mobile: e.target.value })} placeholder="9876543210" maxLength={10} />
+                  <Input value={form.mobile} onChange={(e) => setForm({ ...form, mobile: e.target.value })} placeholder="7909027036" maxLength={10} />
                 </Field>
               </div>
 

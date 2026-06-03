@@ -23,10 +23,11 @@ export const Services = () => (
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {services.map(({ Icon, title, desc }, i) => (
-          <div
+          <Link
             key={title}
+            to={`/inquiry?service=${encodeURIComponent(title)}`}
             style={{ animationDelay: `${i * 60}ms` }}
-            className="group relative rounded-3xl border border-border bg-gradient-card p-7 shadow-elegant hover:shadow-elegant-lg hover:-translate-y-1 transition-smooth animate-fade-in-up overflow-hidden"
+            className="group relative rounded-3xl border border-border bg-gradient-card p-7 shadow-elegant hover:shadow-elegant-lg hover:-translate-y-1 transition-smooth animate-fade-in-up overflow-hidden block"
           >
             <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-primary/5 group-hover:bg-primary/10 transition-smooth" />
             <div className="relative h-14 w-14 rounded-2xl bg-gradient-hero grid place-items-center shadow-elegant mb-5">
@@ -34,10 +35,10 @@ export const Services = () => (
             </div>
             <h3 className="relative font-display font-bold text-xl mb-2">{title}</h3>
             <p className="relative text-sm text-muted-foreground leading-relaxed">{desc}</p>
-            <Link to="/inquiry" className="relative mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all">
+            <span className="relative mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all">
               Get assistance <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+            </span>
+          </Link>
         ))}
       </div>
     </div>
