@@ -84,6 +84,7 @@ const InquiryPage = () => {
                 onClick={() => {
                   setSubmitted(false);
                   setForm({ name: "", mobile: "", email: "", service: "", message: "" });
+                  window.history.replaceState({}, "", "/inquiry");
                 }}
               >
                 Submit another inquiry
