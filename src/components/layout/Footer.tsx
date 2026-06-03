@@ -37,11 +37,19 @@ export const Footer = () => {
         <div>
           <h4 className="font-display font-semibold mb-4">Services</h4>
           <ul className="space-y-2.5 text-sm text-muted-foreground">
-            <li>New PAN Application</li>
-            <li>PAN Correction</li>
-            <li>PAN Reprint</li>
-            <li>e-PAN Download</li>
-            <li>PAN-Aadhaar Linking</li>
+            {[
+              "New PAN Application",
+              "PAN Correction",
+              "PAN Reprint",
+              "e-PAN Download",
+              "PAN-Aadhaar Linking",
+            ].map((s) => (
+              <li key={s}>
+                <Link to={`/inquiry?service=${encodeURIComponent(s)}`} className="hover:text-primary transition-smooth">
+                  {s}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
