@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, ShieldCheck } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/pan-logo.png.asset.json";
 
 const links = [
   { to: "/", label: "Home" },
@@ -34,11 +35,9 @@ export const Navbar = () => {
       )}
     >
       <div className="container flex h-16 md:h-20 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="h-10 w-10 rounded-xl bg-gradient-hero grid place-items-center shadow-elegant group-hover:shadow-glow transition-smooth">
-            <ShieldCheck className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <div className="leading-tight">
+        <Link to="/" className="flex items-center gap-3 group">
+          <img src={logo.url} alt="PAN Sahayak logo" className="h-10 md:h-12 w-auto object-contain" />
+          <div className="leading-tight hidden sm:block">
             <div className="font-display font-bold text-lg text-foreground">PAN Sahayak</div>
             <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Trusted PAN Service</div>
           </div>

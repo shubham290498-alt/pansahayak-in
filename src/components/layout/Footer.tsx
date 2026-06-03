@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
-import { ShieldCheck, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import logo from "@/assets/pan-logo.png.asset.json";
 
 export const Footer = () => {
   return (
     <footer className="mt-24 border-t border-border bg-gradient-subtle">
       <div className="container py-16 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <div className="flex items-center gap-2.5 mb-4">
-            <div className="h-10 w-10 rounded-xl bg-gradient-hero grid place-items-center shadow-elegant">
-              <ShieldCheck className="h-5 w-5 text-primary-foreground" />
-            </div>
+          <div className="flex items-center gap-3 mb-4">
+            <img src={logo.url} alt="PAN Sahayak logo" className="h-12 w-auto object-contain" />
             <div className="font-display font-bold text-lg">PAN Sahayak</div>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
