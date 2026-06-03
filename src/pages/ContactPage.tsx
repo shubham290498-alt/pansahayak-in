@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, Clock, MessageCircle, Send } from "lucide-react";
@@ -33,18 +34,24 @@ const ContactPage = () => {
   };
 
   return (
-    <SiteLayout>
-      <section className="pt-16 pb-4 bg-gradient-subtle border-b border-border">
-        <div className="container text-center max-w-3xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary">Contact & Support</span>
-          <h1 className="mt-3 font-display font-extrabold text-4xl md:text-5xl tracking-tight">
-            We're here to <span className="text-gradient">help you</span>
-          </h1>
-          <p className="mt-4 text-muted-foreground">
-            Reach out via phone, email, WhatsApp, or visit our office. We respond within 1 business hour.
-          </p>
-        </div>
-      </section>
+    <>
+      <Helmet>
+        <title>Contact Us — PAN Sahayak | Phone, WhatsApp & Email</title>
+        <meta name="description" content="Contact PAN Sahayak for PAN card assistance. Call +91 79090 27036, WhatsApp us, email support@pansahayak.in, or visit our New Delhi office." />
+        <link rel="canonical" href="https://pansahayak.in/contact" />
+      </Helmet>
+      <SiteLayout>
+        <section className="pt-16 pb-4 bg-gradient-subtle border-b border-border">
+          <div className="container text-center max-w-3xl mx-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">Contact & Support</span>
+            <h1 className="mt-3 font-display font-extrabold text-4xl md:text-5xl tracking-tight">
+              We're here to <span className="text-gradient">help you</span>
+            </h1>
+            <p className="mt-4 text-muted-foreground">
+              Reach out via phone, email, WhatsApp, or visit our office. We respond within 1 business hour.
+            </p>
+          </div>
+        </section>
 
       <section className="py-16 md:py-20">
         <div className="container grid lg:grid-cols-2 gap-10">
@@ -119,7 +126,8 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
-    </SiteLayout>
+      </SiteLayout>
+    </>
   );
 };
 

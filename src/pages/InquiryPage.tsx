@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Upload, CheckCircle2, Send, MessageCircle } from "lucide-react";
@@ -54,18 +55,24 @@ const InquiryPage = () => {
   };
 
   return (
-    <SiteLayout>
-      <section className="pt-16 pb-4 bg-gradient-subtle border-b border-border">
-        <div className="container text-center max-w-3xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary">Apply Now</span>
-          <h1 className="mt-3 font-display font-extrabold text-4xl md:text-5xl tracking-tight">
-            Start your <span className="text-gradient">PAN application</span>
-          </h1>
-          <p className="mt-4 text-muted-foreground">
-            Submit your details and our experts will reach out within 1 hour during business hours.
-          </p>
-        </div>
-      </section>
+    <>
+      <Helmet>
+        <title>Apply for PAN — Submit Inquiry | PAN Sahayak</title>
+        <meta name="description" content="Submit your PAN application inquiry online. New PAN, Correction, Reprint, e-PAN Download, and Aadhaar Linking. We respond within 1 hour." />
+        <link rel="canonical" href="https://pansahayak.in/inquiry" />
+      </Helmet>
+      <SiteLayout>
+        <section className="pt-16 pb-4 bg-gradient-subtle border-b border-border">
+          <div className="container text-center max-w-3xl mx-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">Apply Now</span>
+            <h1 className="mt-3 font-display font-extrabold text-4xl md:text-5xl tracking-tight">
+              Start your <span className="text-gradient">PAN application</span>
+            </h1>
+            <p className="mt-4 text-muted-foreground">
+              Submit your details and our experts will reach out within 1 hour during business hours.
+            </p>
+          </div>
+        </section>
 
       <section className="py-16 md:py-20">
         <div className="container max-w-3xl">
@@ -156,7 +163,8 @@ const InquiryPage = () => {
           )}
         </div>
       </section>
-    </SiteLayout>
+      </SiteLayout>
+    </>
   );
 };
 
