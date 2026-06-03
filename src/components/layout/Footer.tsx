@@ -48,7 +48,7 @@ export const Footer = () => {
         <div>
           <h4 className="font-display font-semibold mb-4">Get in Touch</h4>
           <ul className="space-y-3 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2.5"><Phone className="h-4 w-4 mt-0.5 text-primary" /> +91 98765 43210</li>
+            <li className="flex items-start gap-2.5"><Phone className="h-4 w-4 mt-0.5 text-primary" /> +91 79090 27036</li>
             <li className="flex items-start gap-2.5"><Mail className="h-4 w-4 mt-0.5 text-primary" /> support@pansahayak.in</li>
             <li className="flex items-start gap-2.5"><MapPin className="h-4 w-4 mt-0.5 text-primary" /> Connaught Place, New Delhi, India</li>
           </ul>
