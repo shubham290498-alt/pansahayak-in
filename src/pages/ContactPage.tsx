@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { postLead } from "@/lib/postLead";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name is required").max(100),
@@ -19,18 +20,35 @@ const ContactPage = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const r = schema.safeParse(form);
     if (!r.success) {
       const errs: Record<string, string> = {};
-      r.error.issues.forEach((i) => { errs[i.path[0] as string] = i.message; });
+      r.error.issues.forEach((i) => {
+        errs[i.path[0] as string] = i.message;
+      });
       setErrors(errs);
       return;
     }
+
     setErrors({});
-    toast.success("Message sent! We'll reply shortly.");
-    setForm({ name: "", email: "", message: "" });
+
+    const payload = {
+      page: "/contact",
+      submittedAt: new Date().toISOString(),
+      name: form.name,
+      email: form.email,
+      message: form.message,
+    };
+
+    try {
+      await postLead(payload);
+      toast.success("Message sent! We'll reply shortly.");
+      setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      toast.error("Failed to submit. Please try again.");
+    }
   };
 
   return (

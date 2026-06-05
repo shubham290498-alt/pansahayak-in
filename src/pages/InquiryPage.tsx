@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { postLead } from "@/lib/postLead";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name is required").max(100),
@@ -39,19 +40,38 @@ const InquiryPage = () => {
     if (service) setForm((prev) => ({ ...prev, service }));
   }, [searchParams]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = schema.safeParse(form);
     if (!result.success) {
       const errs: Record<string, string> = {};
-      result.error.issues.forEach((i) => { errs[i.path[0] as string] = i.message; });
+      result.error.issues.forEach((i) => {
+        errs[i.path[0] as string] = i.message;
+      });
       setErrors(errs);
       toast.error("Please fix the highlighted errors.");
       return;
     }
+
     setErrors({});
-    setSubmitted(true);
-    toast.success("Your inquiry has been submitted!");
+
+    const payload = {
+      page: "/inquiry",
+      submittedAt: new Date().toISOString(),
+      name: form.name,
+      mobile: form.mobile,
+      email: form.email,
+      service: form.service,
+      message: form.message || "",
+    };
+
+    try {
+      await postLead(payload);
+      setSubmitted(true);
+      toast.success("Your inquiry has been submitted!");
+    } catch (err) {
+      toast.error("Failed to submit. Please try again.");
+    }
   };
 
   return (
