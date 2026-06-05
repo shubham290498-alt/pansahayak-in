@@ -35,9 +35,17 @@ export const Services = () => (
             </div>
             <h3 className="relative font-display font-bold text-xl mb-2">{title}</h3>
             <p className="relative text-sm text-muted-foreground leading-relaxed">{desc}</p>
-            <span className="relative mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all">
-              Get assistance <ArrowRight className="h-4 w-4" />
-            </span>
+            <div className="relative mt-5 space-y-2">
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2">
+                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Service fee</span>
+                <span className="text-sm font-extrabold text-primary">₹499</span>
+              </div>
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all">
+                LSO/DD UI: {" "}
+                <span className="font-extrabold">₹499</span>
+                <ArrowRight className="h-4 w-4" />
+              </span>
+            </div>
           </Link>
         ))}
       </div>
